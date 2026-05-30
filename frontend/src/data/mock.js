@@ -188,9 +188,8 @@ export const rejectedConcepts = [
 
 export const dockItems = [
   { id: 'about', label: 'About', iconKey: 'silhouette' },
-  { id: 'projects', label: 'Projects', iconKey: 'sketchbook' },
-  { id: 'writing', label: 'Writing', iconKey: 'typewriter' },
   { id: 'resume', label: 'Resume', iconKey: 'document' },
+  { id: 'projects', label: 'Projects', iconKey: 'sketchbook' },
   { id: 'behance', label: 'Behance', iconKey: 'be' },
   { id: 'email', label: 'Email', iconKey: 'envelope' },
   { id: 'instagram', label: 'Instagram', iconKey: 'ig' },
