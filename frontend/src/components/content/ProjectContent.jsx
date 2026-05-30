@@ -16,12 +16,14 @@ export default function ProjectContent({ project }) {
   if (!project) return null;
 
   const hasPdf = Boolean(project.pdfUrl);
+  const hasFinalImages = Array.isArray(project.finalOutcomeImages) && project.finalOutcomeImages.length > 0;
   const hideTabs = new Set(project.hideTabs || []);
   // When a project ships with a PDF lookbook, drop the Garment Development tab.
   const TABS = ALL_TABS
     .filter(([k]) => !(hasPdf && k === 'garmentDevelopment'))
     .filter(([k]) => !hideTabs.has(k));
   const isPdfTab = hasPdf && tab === 'finalOutcome';
+  const isFinalImagesTab = !hasPdf && hasFinalImages && tab === 'finalOutcome';
   const isInspirationImage = tab === 'inspiration' && Boolean(project.inspirationImage);
 
   return (
@@ -60,8 +62,27 @@ export default function ProjectContent({ project }) {
       </aside>
 
       {/* Reader */}
-      <main className="flex-1 overflow-auto niyati-scroll" style={{ background: isPdfTab ? '#2d2a26' : (isInspirationImage ? '#2d2a26' : 'transparent') }} data-testid={isPdfTab ? 'pdf-viewer-main' : 'project-reader-main'}>
-        {isInspirationImage ? (
+      <main className="flex-1 overflow-auto niyati-scroll" style={{ background: isPdfTab ? '#2d2a26' : (isInspirationImage ? '#2d2a26' : (isFinalImagesTab ? '#2d2a26' : 'transparent')) }} data-testid={isPdfTab ? 'pdf-viewer-main' : 'project-reader-main'}>
+        {isFinalImagesTab ? (
+          <div className="w-full h-full flex flex-col">
+            <div className="flex items-center justify-between px-4 py-2 sticky top-0 z-10" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
+              <div className="pixel text-[9px]" style={{ color: project.accent }}>FINAL OUTCOME — LOOKBOOK</div>
+              <span className="pixel text-[8px]" style={{ color: '#6b6259' }}>{project.finalOutcomeImages.length} PAGES</span>
+            </div>
+            <div className="flex flex-col" data-testid="final-outcome-stack">
+              {project.finalOutcomeImages.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`${project.name} final outcome page ${i + 1}`}
+                  className="w-full block"
+                  style={{ display: 'block', background: '#faf6f0' }}
+                  data-testid={`final-outcome-image-${i}`}
+                />
+              ))}
+            </div>
+          </div>
+        ) : isInspirationImage ? (
           <div className="w-full h-full flex flex-col">
             <div className="flex items-center justify-between px-4 py-2" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
               <div className="pixel text-[9px]" style={{ color: project.accent }}>INSPIRATION — MOODBOARD</div>

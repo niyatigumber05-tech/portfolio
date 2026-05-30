@@ -1,67 +1,65 @@
-# Niyati Gumber — Pixel-Art Fashion Portfolio (Retro macOS)
+# Niyati OS — Pixel-Art Fashion Portfolio
 
 ## Original Problem Statement
-Build an immersive pixel-art fashion portfolio for Niyati Gumber (Fashion Design student, NIFT). The site should feel like a nostalgic retro operating system inspired by macOS:
-- Soft pastel gradient sky background
-- Boot screen + top menu bar + dock
-- Desktop with custom pixel-art icons for projects
-- Draggable / resizable window system
-- A custom pixel-art character (mannequin / dress-form)
-- Sticky note, glass-like dock, custom sewing-machine cursor
-- Subtle 8-bit sounds (royalty-free pre-made WAVs)
-- Behance: https://www.behance.net/niyatigumber
-- Email: niyati.gumber@nift.ac.in
+Build a highly immersive pixel-art fashion portfolio website for Niyati Gumber (Fashion Design student) that feels like a nostalgic retro macOS-inspired operating system. Purely static frontend. Behance + Gmail integrated. Boot screen, top menu bar, draggable/resizable windows, custom pixel character (dress form), glass-like dock, custom sewing-machine cursor, subtle 8-bit sounds.
 
-**Scope:** Purely static frontend (React). No backend. Real moodboard/garment images will be supplied later by the user.
+## Tech Stack
+- React 19 + Tailwind CSS
+- No backend, no DB — fully static
+- Assets served from Emergent customer-assets CDN
 
 ## Architecture
 ```
 /app/frontend/src/
-├── App.js                       # OS state machine (boot → desktop, windows)
-├── index.css                    # Pixel fonts, gradient sky, scanlines
-├── data/mock.js                 # Project metadata, icons, dock + desktop items
-├── lib/sound.js                 # Plays /public/sounds/*.wav (Kenney UI, CC0)
-├── components/
-│   ├── BootScreen.jsx           # Retro boot sequence
-│   ├── Desktop.jsx              # Icon grid + drag/select
-│   ├── Dock.jsx                 # Glass dock with magnify hover
-│   ├── MenuBar.jsx              # Top bar: file/edit, clock, mute, weather
-│   ├── PixelCharacter.jsx       # Tailor's dress-form mannequin (no head)
-│   ├── PixelIcon.jsx            # SVG pixel icons
-│   ├── StickyNote.jsx           # Draggable pastel post-it
-│   ├── Window.jsx               # Draggable/resizable/expand windows w/ sound
-│   └── content/                 # Per-window content views
-└── public/sounds/               # click.wav, close.wav, mouseclick.wav,
-                                 # rollover.wav, switch.wav  (CC0 Kenney)
+├── App.js                   # State, background, window manager
+├── data/mock.js             # Icons, projects, dock, config
+├── lib/sound.js             # 8-bit audio manager
+└── components/
+    ├── BootScreen.jsx
+    ├── Desktop.jsx
+    ├── Dock.jsx
+    ├── MenuBar.jsx
+    ├── PixelCharacter.jsx
+    ├── PixelIcon.jsx
+    ├── Window.jsx
+    └── content/
+        ├── ProjectContent.jsx
+        └── ...
 ```
 
-## Implemented (✅)
-- 2026-02 — Boot screen, desktop, menu bar, dock, draggable/resizable windows, pixel icons, sticky note, mock data, gradient sky background.
-- 2026-02 — Royalty-free 8-bit WAVs wired through `sound.js` (hover/click/close/open/startup). Audio unlock on first user gesture.
-- 2026-02 — Sticky note: removed the "n.g." signature line per user request.
-- 2026-02 — `PixelCharacter` redesigned as a classic tailor's dress-form (torso + neck peg + wooden base/pole, **no head**) with idle sway, sewing-pin and measuring-tape poses.
-- 2026-02 — Window controls (close / minimize / expand) and MenuBar mute button now trigger appropriate sound effects with hover cues.
-- 2026-02 — **Digital Atelier project**: renamed "Recess Club" → "Digital Atelier", swapped tennis-ball icon for a pixel CRT/monitor icon (`monitor` icon added to `PixelIcon.jsx`), and wired the Tommy Hilfiger SS27 portfolio PDF into the "Final Outcome" tab via an inline `<iframe>` plus an "Open in New Tab" button. The "Garment Development" tab is auto-hidden for any project carrying a `pdfUrl`.
+## Project Data Schema (mock.js)
+A project can declare:
+- `pdfUrl`            → renders Final Outcome as embedded PDF (hides Garment Development tab)
+- `finalOutcomeImages` (array) → renders Final Outcome as full-width stacked lookbook images
+- `inspirationImage`  → renders Inspiration tab as a single full-image board
+- `processImage`      → renders Process tab as a single image
+- `tabLabels.process` → custom label for Process tab
+- `hideTabs`          → array of tab keys to hide entirely
 
-## Backlog / Roadmap
+## Changelog
+- 2026-02 — Dock reordered (About · Resume · Projects), Writing menu removed.
+- 2026-02 — Desktop background replaced with `cv.jpg`; sticky note removed.
+- 2026-02 — `architectural serenity.pdf` added to Final Outcome (then replaced).
+- 2026-02 — Architectural Serenity: Inspiration tab now displays `portfolio.jpg` (text removed).
+- 2026-05-30 — **Architectural Serenity Final Outcome** replaced PDF with 3 stacked full-width lookbook images (`portfolio (4)`, `portfolio (6)`, `portfolio (5)`); Garment Development tab remains hidden.
 
-### P1 — UX polish (next session)
-- Custom "sewing-machine" cursor with hover / dragging / clicking states.
-- Tap-burst micro-animation for touch / mobile interactions.
-- Mobile responsiveness while keeping the full OS metaphor (no fallback layout).
+## Roadmap
+### P0
+- ✅ Replace PDF with stacked lookbook images for Architectural Serenity
 
-### P2 — Content
-- Drop real moodboard + final garment images into windows when user provides them.
-- Add Behance + Gmail buttons on a dedicated "Contact" window with copy-to-clipboard.
+### P1
+- Custom sewing-machine cursor states (hover / dragging / clicking) + mobile tap-burst animation
+- Mobile responsiveness preserving the OS metaphor
 
-### P3 — Nice-to-haves
-- Minimize-to-dock animation.
-- Trash can with a "delete sketch" gag.
-- Window snap zones (left/right halves).
+### P2 / Backlog
+- Real imagery + content for remaining projects (waiting on user uploads): Self Radiance, Digital Atelier, When Your Initials Are Enough, Floral Allure, Visual Storytelling
+- Optional: per-project lookbook templates (cover page, page-numbers)
 
-## Testing
-- Frontend only (static). Visual smoke screenshot taken after each batch of changes.
-- No backend / DB.
+## Integrations
+- Behance link (external)
+- Gmail mailto link (external)
+- No API keys required
 
-## Credentials
-N/A — static site, no auth.
+## Health Check
+- Broken: none
+- Mocked: remaining 5 projects still placeholder content (awaiting user assets)
