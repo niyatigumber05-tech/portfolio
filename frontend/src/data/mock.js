@@ -63,7 +63,7 @@ export const projects = [
     short: 'Bioluminescent garments that glow with inner light.',
     pdfUrl: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/3nnod5xi_Portfolio%20%283%29.pdf',
     inspirationImage: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/xb1v0j6c_portfolio%20%281%29.jpg',
-    processImage: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/cce1v3ws_portfolio.jpg',
+    processImage: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/4bqbltyz_portfolio%20%287%29.jpg',
     sections: {
       ...lorem,
       concept:
