@@ -86,7 +86,7 @@ export const projects = [
     iconKey: 'monitor',
     accent: '#7A8FA8',
     short: 'A digital lookbook — Tommy Hilfiger SS27, viewed through the screen.',
-    tabLabels: { research: 'Brand Research' },
+    tabLabels: { research: 'Brand Research', reflection: 'Technical Drawing' },
     researchImages: [
       'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/m33ditn2_20.jpg',
     ],
@@ -97,6 +97,10 @@ export const projects = [
     finalOutcomeImages: [
       'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/sbgsaayb_23.jpg',
       'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/0qdxdo24_24.jpg',
+    ],
+    reflectionImages: [
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/rzp2204g_25.jpg',
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/swbicujs_26.jpg',
     ],
     hideTabs: ['garmentDevelopment'],
     sections: {
