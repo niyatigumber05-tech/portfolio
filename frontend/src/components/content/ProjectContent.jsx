@@ -12,12 +12,17 @@ const ALL_TABS = [
 ];
 
 export default function ProjectContent({ project }) {
-  const [tab, setTab] = useState('concept');
+  const hideTabs = new Set(project?.hideTabs || []);
+  const firstVisibleTab = ALL_TABS.find(([k]) => !hideTabs.has(k))?.[0] || 'concept';
+  const [tab, setTab] = useState(firstVisibleTab);
+  React.useEffect(() => {
+    setTab(firstVisibleTab);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [project?.id]);
   if (!project) return null;
 
   const hasPdf = Boolean(project.pdfUrl);
   const hasFinalImages = Array.isArray(project.finalOutcomeImages) && project.finalOutcomeImages.length > 0;
-  const hideTabs = new Set(project.hideTabs || []);
   const tabLabels = project.tabLabels || {};
   // When a project ships with a PDF lookbook, drop the Garment Development tab.
   const TABS = ALL_TABS

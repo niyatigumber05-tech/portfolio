@@ -99,11 +99,13 @@ export const projects = [
     desktopSlot: 2,
   },
   {
-    id: 'initials-enough',
-    name: 'When Your Initials Are Enough',
+    id: 'reimagining-jo-march',
+    name: 'Reimagining Jo March',
     iconKey: 'bag',
     accent: '#C8A47E',
     short: 'A study in monogram, woven leather and quiet luxury.',
+    tabLabels: { finalOutcome: 'Final Snapshots' },
+    hideTabs: ['concept', 'inspiration', 'process', 'garmentDevelopment', 'reflection'],
     sections: {
       ...lorem,
       concept:
