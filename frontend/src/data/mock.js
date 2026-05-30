@@ -110,6 +110,11 @@ export const projects = [
       'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/h9s331ka_portfolio%20%289%29.jpg',
       'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/1clbm7sn_portfolio%20%288%29.jpg',
     ],
+    finalOutcomeImages: [
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/kbpx2hum_portfolio%20%2812%29.jpg',
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/ks4wfyme_portfolio%20%2811%29.jpg',
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/s5cdo2vl_portfolio%20%2810%29.jpg',
+    ],
     sections: {
       ...lorem,
       concept:
