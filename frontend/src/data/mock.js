@@ -61,9 +61,14 @@ export const projects = [
     iconKey: 'orb',
     accent: '#A695C4',
     short: 'Bioluminescent garments that glow with inner light.',
-    pdfUrl: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/3nnod5xi_Portfolio%20%283%29.pdf',
     inspirationImage: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/xb1v0j6c_portfolio%20%281%29.jpg',
     processImage: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/4bqbltyz_portfolio%20%287%29.jpg',
+    finalOutcomeImages: [
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/defd30qy_29.jpg',
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/fm6bjasb_30.jpg',
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/mrlvfgpf_31.jpg',
+    ],
+    hideTabs: ['garmentDevelopment'],
     sections: {
       ...lorem,
       concept:
