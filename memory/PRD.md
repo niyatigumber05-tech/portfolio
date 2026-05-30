@@ -42,6 +42,7 @@ A project can declare:
 - 2026-02 — `architectural serenity.pdf` added to Final Outcome (then replaced).
 - 2026-02 — Architectural Serenity: Inspiration tab now displays `portfolio.jpg` (text removed).
 - 2026-05-30 — **Architectural Serenity Final Outcome** replaced PDF with 3 stacked full-width lookbook images (`portfolio (4)`, `portfolio (6)`, `portfolio (5)`); Garment Development tab remains hidden.
+- 2026-05-30 — **Self Radiance Process tab** now displays `portfolio.jpg` full-width (replaces text content).
 
 ## Roadmap
 ### P0
