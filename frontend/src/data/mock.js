@@ -9,7 +9,7 @@ export const designer = {
   email: 'niyati.gumber@nift.ac.in',
   behance: 'https://www.behance.net/niyatigumber',
   instagram: '#',
-  resume: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/ewpukagl_cv%20%281%29.pdf',
+  resume: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/urhxmmgo_portfolio%20%282%29.jpg',
 };
 
 export const aboutSections = [
