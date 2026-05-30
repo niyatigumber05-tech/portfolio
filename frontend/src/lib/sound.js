@@ -1,59 +1,74 @@
-// Web Audio synthesized retro 8-bit sounds. No external files.
-// Royalty-free by definition — generated entirely on the client.
+// Plays pre-made royalty-free 8-bit WAVs (Kenney UI Audio, CC0).
+// Files live under /public/sounds/.
 class SoundManager {
   constructor() {
     this.muted = false;
-    this.ctx = null;
+    this.unlocked = false;
+    // Pre-create Audio objects for snappy playback. We clone on play so
+    // overlapping triggers (e.g. rapid hover) don't cut each other off.
+    const base = '/sounds/';
+    this.assets = {
+      startup: new Audio(base + 'switch.wav'),
+      open: new Audio(base + 'click.wav'),
+      close: new Audio(base + 'close.wav'),
+      hover: new Audio(base + 'rollover.wav'),
+      click: new Audio(base + 'mouseclick.wav'),
+      trash: new Audio(base + 'close.wav'),
+    };
+    // Per-kind output gain (relative to file). 0..1
+    this.gains = {
+      startup: 0.55,
+      open: 0.35,
+      close: 0.4,
+      hover: 0.18,
+      click: 0.4,
+      trash: 0.45,
+    };
+    Object.values(this.assets).forEach((a) => { a.preload = 'auto'; });
   }
-  init() {
-    if (this.ctx) return;
-    try {
-      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
-    } catch (e) {
-      this.ctx = null;
-    }
-  }
+
   setMuted(m) { this.muted = m; }
 
-  _beep({ freq = 440, type = 'square', dur = 0.08, gain = 0.06, slide = 0 }) {
-    if (this.muted) return;
-    this.init();
-    if (!this.ctx) return;
-    const t0 = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const g = this.ctx.createGain();
-    osc.type = type;
-    osc.frequency.setValueAtTime(freq, t0);
-    if (slide) osc.frequency.exponentialRampToValueAtTime(Math.max(40, freq + slide), t0 + dur);
-    g.gain.setValueAtTime(gain, t0);
-    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
-    osc.connect(g); g.connect(this.ctx.destination);
-    osc.start(t0); osc.stop(t0 + dur + 0.02);
+  // Browsers block audio until a user gesture. Call this on first interaction.
+  unlock() {
+    if (this.unlocked) return;
+    this.unlocked = true;
+    Object.values(this.assets).forEach((a) => {
+      try {
+        a.muted = true;
+        const p = a.play();
+        if (p && p.then) {
+          p.then(() => { a.pause(); a.currentTime = 0; a.muted = false; })
+            .catch(() => { a.muted = false; });
+        } else {
+          a.pause(); a.currentTime = 0; a.muted = false;
+        }
+      } catch (e) { /* noop */ }
+    });
   }
 
   play(kind) {
-    switch (kind) {
-      case 'startup':
-        this._beep({ freq: 392, dur: 0.12, gain: 0.05 });
-        setTimeout(() => this._beep({ freq: 523, dur: 0.12, gain: 0.05 }), 110);
-        setTimeout(() => this._beep({ freq: 659, dur: 0.18, gain: 0.05 }), 220);
-        break;
-      case 'open':
-        this._beep({ freq: 660, dur: 0.06, gain: 0.04, slide: 200 });
-        break;
-      case 'close':
-        this._beep({ freq: 520, dur: 0.06, gain: 0.04, slide: -200 });
-        break;
-      case 'hover':
-        this._beep({ freq: 880, dur: 0.025, gain: 0.012, type: 'triangle' });
-        break;
-      case 'trash':
-        this._beep({ freq: 220, dur: 0.18, gain: 0.05, type: 'sawtooth', slide: -100 });
-        break;
-      default:
-        break;
-    }
+    if (this.muted) return;
+    const src = this.assets[kind];
+    if (!src) return;
+    try {
+      const a = src.cloneNode(true);
+      a.volume = this.gains[kind] ?? 0.3;
+      const p = a.play();
+      if (p && p.catch) p.catch(() => { /* user gesture needed */ });
+    } catch (e) { /* noop */ }
   }
 }
 
 export const sound = new SoundManager();
+
+// Unlock audio on the first user gesture so subsequent .play() works.
+if (typeof window !== 'undefined') {
+  const unlock = () => {
+    sound.unlock();
+    window.removeEventListener('pointerdown', unlock);
+    window.removeEventListener('keydown', unlock);
+  };
+  window.addEventListener('pointerdown', unlock, { once: true });
+  window.addEventListener('keydown', unlock, { once: true });
+}

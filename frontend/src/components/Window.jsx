@@ -58,7 +58,7 @@ export default function WindowFrame({ win, children, onClose, onMinimize, onFocu
 
   const toggleExpand = () => {
     setExpanded((v) => !v);
-    sound.play('hover');
+    sound.play('click');
   };
 
   const dims = expanded
@@ -92,7 +92,8 @@ export default function WindowFrame({ win, children, onClose, onMinimize, onFocu
       >
         <div className="flex items-center gap-1.5">
           <button
-            onClick={(e) => { e.stopPropagation(); onClose(); }}
+            onClick={(e) => { e.stopPropagation(); sound.play('close'); onClose(); }}
+            onMouseEnter={() => sound.play('hover')}
             className="clickable flex items-center justify-center"
             style={{ width: 14, height: 14, background: '#e07a7a', border: '1.5px solid #2d2a26' }}
             title="Close"
@@ -100,7 +101,8 @@ export default function WindowFrame({ win, children, onClose, onMinimize, onFocu
             <X size={8} strokeWidth={3} color="#2d2a26"/>
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); onMinimize(); }}
+            onClick={(e) => { e.stopPropagation(); sound.play('click'); onMinimize(); }}
+            onMouseEnter={() => sound.play('hover')}
             className="clickable flex items-center justify-center"
             style={{ width: 14, height: 14, background: '#e3c976', border: '1.5px solid #2d2a26' }}
             title="Minimize"
@@ -109,6 +111,7 @@ export default function WindowFrame({ win, children, onClose, onMinimize, onFocu
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); toggleExpand(); }}
+            onMouseEnter={() => sound.play('hover')}
             className="clickable flex items-center justify-center"
             style={{ width: 14, height: 14, background: '#9ec48f', border: '1.5px solid #2d2a26' }}
             title="Expand"

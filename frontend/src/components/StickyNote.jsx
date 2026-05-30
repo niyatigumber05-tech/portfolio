@@ -47,7 +47,6 @@ export default function StickyNote() {
       <div style={{ fontFamily: "'Crimson Pro', serif", fontSize: 15, lineHeight: 1.35, color: '#2d2a26' }}>
         Transforming nature, emotion, and structure into wearable stories.
       </div>
-      <div className="pixel text-[8px] mt-3" style={{ color: '#7a4b57' }}>n.g.</div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Volume2, VolumeX, Wifi, BatteryMedium, Cloud } from 'lucide-react';
+import { sound } from '../lib/sound';
 
 export default function MenuBar({ activeSection, muted, onToggleMute }) {
   const [time, setTime] = useState(new Date());
@@ -31,7 +32,13 @@ export default function MenuBar({ activeSection, muted, onToggleMute }) {
       </div>
 
       <div className="flex items-center gap-4">
-        <button onClick={onToggleMute} className="clickable flex items-center gap-1" title={muted ? 'Sound off' : 'Sound on'}>
+        <button
+          data-testid="menubar-mute-btn"
+          onClick={() => { sound.play('click'); onToggleMute(); }}
+          onMouseEnter={() => sound.play('hover')}
+          className="clickable flex items-center gap-1"
+          title={muted ? 'Sound off' : 'Sound on'}
+        >
           {muted ? <VolumeX size={14} color="#2d2a26"/> : <Volume2 size={14} color="#2d2a26"/>}
         </button>
         <span className="flex items-center gap-1"><Cloud size={14} color="#2d2a26"/><span className="pixel text-[9px]" style={{ color: '#2d2a26' }}>23°</span></span>
