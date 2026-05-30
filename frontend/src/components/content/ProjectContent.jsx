@@ -86,20 +86,34 @@ export default function ProjectContent({ project }) {
             {TABS.find(([k]) => k === tab)[1].toUpperCase()}
           </div>
           <div style={{ height: 2, background: '#2d2a26', width: 60, marginBottom: 18 }}/>
-          <p
-            style={{
-              fontFamily: "'Crimson Pro', serif",
-              fontSize: 18,
-              lineHeight: 1.6,
-              color: '#2d2a26',
-              fontWeight: 400,
-            }}
-          >
-            {project.sections[tab]}
-          </p>
+          {!(tab === 'inspiration' && project.inspirationImage) && (
+            <p
+              style={{
+                fontFamily: "'Crimson Pro', serif",
+                fontSize: 18,
+                lineHeight: 1.6,
+                color: '#2d2a26',
+                fontWeight: 400,
+              }}
+            >
+              {project.sections[tab]}
+            </p>
+          )}
 
-          {/* Moodboard placeholder */}
-          {tab === 'inspiration' && (
+          {/* Inspiration board — real image if supplied, otherwise placeholders */}
+          {tab === 'inspiration' && project.inspirationImage && (
+            <div data-testid="inspiration-image-wrap">
+              <img
+                src={project.inspirationImage}
+                alt={`${project.name} inspiration board`}
+                className="w-full h-auto"
+                style={{ border: '2px solid #2d2a26', background: '#faf6f0', imageRendering: 'auto' }}
+                data-testid="inspiration-image"
+              />
+            </div>
+          )}
+
+          {tab === 'inspiration' && !project.inspirationImage && (
             <div className="mt-8">
               <div className="pixel text-[9px] mb-3" style={{ color: '#6b6259' }}>MOODBOARD — PENDING UPLOAD</div>
               <div className="grid grid-cols-3 gap-3">
