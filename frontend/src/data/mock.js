@@ -14,19 +14,9 @@ export const designer = {
 
 export const aboutSections = [
   {
-    heading: 'Hello, I\'m Niyati.',
+    heading: "Hello, I'm Niyati.",
     body:
-      'I am a narrative-driven fashion designer studying at NIFT. My practice sits at the intersection of architectural form, emotional storytelling and the soft systems of the natural world — shells, light, gardens, weather.',
-  },
-  {
-    heading: 'Practice',
-    body:
-      'Each collection begins as a question about structure. I research the way a nautilus grows, the way bioluminescence breathes, the way a piece of architecture holds quiet — and translate that into garments that feel both engineered and intimate.',
-  },
-  {
-    heading: 'Approach',
-    body:
-      'Storytelling first, silhouette second. Every garment is preceded by a written concept, a research wall, and a slow process of material study. The clothes should arrive feeling inevitable.',
+      'I am a fashion design student driven by a passion for storytelling through design. My work focuses on clean, minimal aesthetics combined with strong conceptual narratives, translating ideas and emotions into thoughtfully constructed garments.\n\nI am particularly interested in surface development, structure, and the interplay of form and movement, constantly exploring ways to create designs that are both visually compelling and meaningful.',
   },
 ];
 

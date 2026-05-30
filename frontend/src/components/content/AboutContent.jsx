@@ -15,7 +15,7 @@ export default function AboutContent() {
         {aboutSections.map((s, i) => (
           <section key={i}>
             <h3 className="pixel text-[10px] mb-2" style={{ color: '#7a4b57' }}>{s.heading.toUpperCase()}</h3>
-            <p style={{ fontFamily: "'Crimson Pro', serif", fontSize: 17, lineHeight: 1.6, color: '#2d2a26' }}>
+            <p style={{ fontFamily: "'Crimson Pro', serif", fontSize: 17, lineHeight: 1.6, color: '#2d2a26', whiteSpace: 'pre-line' }}>
               {s.body}
             </p>
           </section>
