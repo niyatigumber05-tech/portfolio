@@ -6,7 +6,6 @@ import SkyBackground from './components/SkyBackground';
 import Desktop from './components/Desktop';
 import Dock from './components/Dock';
 import PixelCharacter from './components/PixelCharacter';
-import StickyNote from './components/StickyNote';
 import TrashCan from './components/TrashCan';
 import WindowFrame from './components/Window';
 import { sound } from './lib/sound';
@@ -135,8 +134,6 @@ export default function App() {
           <MenuBar activeSection={activeSection} muted={muted} onToggleMute={() => setMuted((m) => !m)} />
 
           <Desktop icons={desktopIcons} onOpen={handleIconOpen} />
-
-          <StickyNote />
 
           <TrashCan onOpen={() => openWindow({ id: 'trash', title: 'Rejected Concepts', renderKey: 'trash', accent: '#6B6259', w: 540, h: 440 })} />
 
