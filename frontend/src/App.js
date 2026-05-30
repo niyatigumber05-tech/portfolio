@@ -16,6 +16,7 @@ import AboutContent from './components/content/AboutContent';
 import ContactContent from './components/content/ContactContent';
 import WritingContent from './components/content/WritingContent';
 import TrashContent from './components/content/TrashContent';
+import CVContent from './components/content/CVContent';
 
 export default function App() {
   const [booted, setBooted] = useState(false);
@@ -80,6 +81,8 @@ export default function App() {
       openWindow({ id: 'about-me', title: 'About Me', renderKey: 'about', accent: icon.accent, w: 680, h: 520 });
     } else if (icon.isContact) {
       openWindow({ id: 'contact', title: 'Contact', renderKey: 'contact', accent: icon.accent, w: 560, h: 440 });
+    } else if (icon.isCv) {
+      openWindow({ id: 'cv', title: 'CV', renderKey: 'cv', accent: '#7A4B57', w: 720, h: 560 });
     } else if (icon.id === 'writing') {
       openWindow({ id: 'writing', title: 'Writing & Creative Work', renderKey: 'writing', accent: icon.accent, w: 720, h: 520 });
     } else {
@@ -92,7 +95,7 @@ export default function App() {
     if (item.id === 'email') return handleIconOpen({ isContact: true, accent: '#B07585' });
     if (item.id === 'projects') return openWindow({ id: 'projects-index', title: 'Projects', renderKey: 'projects-index', accent: '#7A4B57', w: 720, h: 500 });
     if (item.id === 'writing') return handleIconOpen({ id: 'writing', name: 'Writing & Creative Work', accent: '#6B6259' });
-    if (item.id === 'resume') return window.open(designer.resume, '_blank');
+    if (item.id === 'resume') return handleIconOpen({ isCv: true });
     if (item.id === 'behance') return window.open(designer.behance, '_blank');
     if (item.id === 'instagram') return window.open(designer.instagram, '_blank');
   };
@@ -102,6 +105,7 @@ export default function App() {
       case 'project': return <ProjectContent project={w.payload} />;
       case 'about': return <AboutContent />;
       case 'contact': return <ContactContent />;
+      case 'cv': return <CVContent />;
       case 'writing': return <WritingContent />;
       case 'trash': return <TrashContent items={rejectedConcepts} />;
       case 'projects-index': return <ProjectsIndex onOpen={handleIconOpen} />;

@@ -270,6 +270,37 @@ const ICONS = {
       {px(3, 13, '#2d2a26', 10, 1)}
     </g>
   ),
+  // CV / résumé — paper with photo + lines
+  cv: ({ accent = '#7A4B57' }) => (
+    <g>
+      {/* paper fill */}
+      {px(3, 1, '#faf6f0', 10, 14)}
+      {/* paper border */}
+      {px(3, 1, '#2d2a26', 10, 1)}
+      {px(3, 14, '#2d2a26', 10, 1)}
+      {px(3, 1, '#2d2a26', 1, 14)}
+      {px(12, 1, '#2d2a26', 1, 14)}
+      {/* folded top-right corner */}
+      {px(10, 1, '#e8dfc8', 3, 3)}
+      {px(10, 1, '#2d2a26', 1, 4)}
+      {px(10, 4, '#2d2a26', 3, 1)}
+      {/* photo block (top-left) */}
+      {px(5, 3, accent, 3, 3)}
+      {px(5, 3, '#2d2a26', 3, 1)}
+      {px(5, 5, '#2d2a26', 3, 1)}
+      {px(5, 3, '#2d2a26', 1, 3)}
+      {px(7, 3, '#2d2a26', 1, 3)}
+      {/* short lines beside photo */}
+      {px(9, 3, '#2d2a26', 2, 1)}
+      {px(9, 5, '#2d2a26', 2, 1)}
+      {/* accent header line */}
+      {px(5, 7, accent, 6, 1)}
+      {/* body lines */}
+      {px(5, 9, '#2d2a26', 7, 1)}
+      {px(5, 11, '#2d2a26', 5, 1)}
+      {px(5, 13, '#2d2a26', 7, 1)}
+    </g>
+  ),
   // Trash can — chrome wireframe
   trash: () => (
     <g>

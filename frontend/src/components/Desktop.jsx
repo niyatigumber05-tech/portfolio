@@ -7,7 +7,7 @@ export default function Desktop({ icons, onOpen }) {
     <div className="absolute inset-0" style={{ zIndex: 10, paddingTop: 50 }}>
       <div
         className="absolute right-6 top-12 grid"
-        style={{ gridTemplateColumns: '1fr', rowGap: 22 }}
+        style={{ gridTemplateColumns: '1fr', rowGap: 10 }}
       >
         {icons.map((icon) => (
           <DesktopIconItem key={icon.id} icon={icon} onOpen={onOpen} />
@@ -27,6 +27,7 @@ function DesktopIconItem({ icon, onOpen }) {
       }}
       className="clickable group flex flex-col items-center gap-1 w-[88px] outline-none"
       style={{ background: 'transparent', border: 'none' }}
+      data-testid={`desktop-icon-${icon.id}`}
     >
       <div
         className="flex items-center justify-center"

@@ -9,7 +9,7 @@ export const designer = {
   email: 'niyati.gumber@nift.ac.in',
   behance: 'https://www.behance.net/niyatigumber',
   instagram: '#',
-  resume: '#',
+  resume: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/ewpukagl_cv%20%281%29.pdf',
 };
 
 export const aboutSections = [
@@ -199,5 +199,6 @@ export const dockItems = [
 export const desktopIcons = [
   ...projects,
   { id: 'about-me', name: 'About Me', iconKey: 'silhouette', accent: '#7A4B57', desktopSlot: 7, isAbout: true },
-  { id: 'contact', name: 'Contact', iconKey: 'envelope', accent: '#B07585', desktopSlot: 8, isContact: true },
+  { id: 'cv', name: 'CV', iconKey: 'cv', accent: '#7A4B57', desktopSlot: 8, isCv: true },
+  { id: 'contact', name: 'Contact', iconKey: 'envelope', accent: '#B07585', desktopSlot: 9, isContact: true },
 ];
