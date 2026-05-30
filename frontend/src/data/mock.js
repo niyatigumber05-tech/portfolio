@@ -56,6 +56,7 @@ export const projects = [
     short: 'A study in stillness — architecture worn close to the skin.',
     pdfUrl: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/uxzccf2i_architectural%20serenity.pdf',
     inspirationImage: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/cce1v3ws_portfolio.jpg',
+    hideTabs: ['research'],
     sections: { ...lorem },
     desktopSlot: 0,
   },

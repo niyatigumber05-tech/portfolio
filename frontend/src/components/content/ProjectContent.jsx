@@ -16,8 +16,11 @@ export default function ProjectContent({ project }) {
   if (!project) return null;
 
   const hasPdf = Boolean(project.pdfUrl);
+  const hideTabs = new Set(project.hideTabs || []);
   // When a project ships with a PDF lookbook, drop the Garment Development tab.
-  const TABS = hasPdf ? ALL_TABS.filter(([k]) => k !== 'garmentDevelopment') : ALL_TABS;
+  const TABS = ALL_TABS
+    .filter(([k]) => !(hasPdf && k === 'garmentDevelopment'))
+    .filter(([k]) => !hideTabs.has(k));
   const isPdfTab = hasPdf && tab === 'finalOutcome';
 
   return (
