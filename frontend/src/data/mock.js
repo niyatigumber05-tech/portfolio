@@ -63,12 +63,15 @@ export const projects = [
     iconKey: 'orb',
     accent: '#A695C4',
     short: 'Bioluminescent garments that glow with inner light.',
+    pdfUrl: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/3nnod5xi_Portfolio%20%283%29.pdf',
     sections: {
       ...lorem,
       concept:
         'A meditation on inner light — translating the quiet glow of deep-sea bioluminescence into garments that breathe. The wearer carries their own radiance.',
       inspiration:
         'Bioluminescent plankton, fireflies at dusk, the soft phosphor of a CRT screen. References to Iris van Herpen and the architecture of light.',
+      finalOutcome:
+        'The complete Self Radiance lookbook — concept, process, and final looks — opens directly inside the window as a scrollable portfolio.',
     },
     desktopSlot: 1,
   },
