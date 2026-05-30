@@ -31,6 +31,7 @@ Build a highly immersive pixel-art fashion portfolio website for Niyati Gumber (
 A project can declare:
 - `pdfUrl`            → renders Final Outcome as embedded PDF (hides Garment Development tab)
 - `finalOutcomeImages` (array) → renders Final Outcome as full-width stacked lookbook images
+- `researchImages`   (array) → renders Research tab as full-width stacked lookbook images
 - `inspirationImage`  → renders Inspiration tab as a single full-image board
 - `processImage`      → renders Process tab as a single image
 - `tabLabels.process` → custom label for Process tab
@@ -43,6 +44,10 @@ A project can declare:
 - 2026-02 — Architectural Serenity: Inspiration tab now displays `portfolio.jpg` (text removed).
 - 2026-05-30 — **Architectural Serenity Final Outcome** replaced PDF with 3 stacked full-width lookbook images (`portfolio (4)`, `portfolio (6)`, `portfolio (5)`); Garment Development tab remains hidden.
 - 2026-05-30 — **Self Radiance Process tab** now displays `portfolio.jpg` full-width (replaces text content).
+- 2026-05-30 — **Self Radiance Process tab** updated to `portfolio (7).jpg` full-width.
+- 2026-05-30 — **Self Radiance Final Outcome** replaced PDF with 3 stacked full-width images (`31.jpg`, `29.jpg`, `30.jpg`).
+- 2026-05-30 — Project "When Your Initials Are Enough" renamed to **Reimagining Jo March**; tabs restricted to Research + Final Snapshots only.
+- 2026-05-30 — **Reimagining Jo March Research tab** added with 2 stacked full-width images (`portfolio (9).jpg`, `portfolio (8).jpg`). New `researchImages` schema added to ProjectContent renderer.
 
 ## Roadmap
 ### P0

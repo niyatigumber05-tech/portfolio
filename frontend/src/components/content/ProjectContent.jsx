@@ -34,6 +34,7 @@ export default function ProjectContent({ project }) {
   const isFinalImagesTab = !hasPdf && hasFinalImages && tab === 'finalOutcome';
   const isInspirationImage = tab === 'inspiration' && Boolean(project.inspirationImage);
   const isProcessImage = tab === 'process' && Boolean(project.processImage);
+  const isResearchImagesTab = tab === 'research' && hasResearchImages;
 
   return (
     <div className="flex h-full">
@@ -74,10 +75,29 @@ export default function ProjectContent({ project }) {
       <main
         key={tab}
         className="flex-1 overflow-auto niyati-scroll niyati-flicker relative"
-        style={{ background: isPdfTab ? '#2d2a26' : (isInspirationImage || isProcessImage || isFinalImagesTab ? '#2d2a26' : 'transparent') }}
+        style={{ background: isPdfTab ? '#2d2a26' : (isInspirationImage || isProcessImage || isFinalImagesTab || isResearchImagesTab ? '#2d2a26' : 'transparent') }}
         data-testid={isPdfTab ? 'pdf-viewer-main' : 'project-reader-main'}
       >
-        {isFinalImagesTab ? (
+        {isResearchImagesTab ? (
+          <div className="w-full h-full flex flex-col">
+            <div className="flex items-center justify-between px-4 py-2 sticky top-0 z-10" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
+              <div className="pixel text-[9px]" style={{ color: project.accent }}>RESEARCH — LOOKBOOK</div>
+              <span className="pixel text-[8px]" style={{ color: '#6b6259' }}>{project.researchImages.length} PAGES</span>
+            </div>
+            <div className="flex flex-col" data-testid="research-stack">
+              {project.researchImages.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`${project.name} research page ${i + 1}`}
+                  className="w-full block"
+                  style={{ display: 'block', background: '#faf6f0' }}
+                  data-testid={`research-image-${i}`}
+                />
+              ))}
+            </div>
+          </div>
+        ) : isFinalImagesTab ? (
           <div className="w-full h-full flex flex-col">
             <div className="flex items-center justify-between px-4 py-2 sticky top-0 z-10" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
               <div className="pixel text-[9px]" style={{ color: project.accent }}>FINAL OUTCOME — LOOKBOOK</div>

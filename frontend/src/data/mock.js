@@ -106,6 +106,10 @@ export const projects = [
     short: 'A study in monogram, woven leather and quiet luxury.',
     tabLabels: { finalOutcome: 'Final Snapshots' },
     hideTabs: ['concept', 'inspiration', 'process', 'garmentDevelopment', 'reflection'],
+    researchImages: [
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/h9s331ka_portfolio%20%289%29.jpg',
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/1clbm7sn_portfolio%20%288%29.jpg',
+    ],
     sections: {
       ...lorem,
       concept:
