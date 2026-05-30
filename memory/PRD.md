@@ -34,6 +34,7 @@ A project can declare:
 - `researchImages`   (array) → renders Research tab as full-width stacked lookbook images
 - `inspirationImage`  → renders Inspiration tab as a single full-image board
 - `processImage`      → renders Process tab as a single image
+- `processImages`    (array) → renders Process tab as full-width stacked lookbook pages
 - `tabLabels.process` → custom label for Process tab
 - `tabLabels.research` → custom label for Research tab
 - `tabLabels.finalOutcome` → custom label for Final Outcome tab
@@ -52,6 +53,7 @@ A project can declare:
 - 2026-05-30 — **Reimagining Jo March Research tab** added with 2 stacked full-width images (`portfolio (9).jpg`, `portfolio (8).jpg`). New `researchImages` schema added to ProjectContent renderer.
 - 2026-05-30 — **Reimagining Jo March Final Snapshots** populated with 3 stacked full-width images (`portfolio (12)`, `(11)`, `(10)`).
 - 2026-05-30 — **Digital Atelier Research tab** renamed to **"Brand Research"** via `tabLabels.research`; added `20.jpg` (Tommy Hilfiger brand research page) as a stacked full-width image. Header label now uses the renamed tab name.
+- 2026-05-30 — **Digital Atelier Process tab** populated with 2 stacked full-width lookbook pages (`21.jpg` mood + color story, `22.jpg` fabrics + product assortment). New `processImages` array schema added to ProjectContent renderer.
 
 ## Roadmap
 ### P0

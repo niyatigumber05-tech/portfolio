@@ -91,6 +91,10 @@ export const projects = [
     researchImages: [
       'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/m33ditn2_20.jpg',
     ],
+    processImages: [
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/6fq8psel_21.jpg',
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/c42am2q0_22.jpg',
+    ],
     sections: {
       ...lorem,
       concept:
