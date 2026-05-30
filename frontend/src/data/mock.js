@@ -54,6 +54,7 @@ export const projects = [
     iconKey: 'shell',
     accent: '#B07585',
     short: 'A study in stillness — architecture worn close to the skin.',
+    pdfUrl: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/uxzccf2i_architectural%20serenity.pdf',
     sections: { ...lorem },
     desktopSlot: 0,
   },
