@@ -23,6 +23,7 @@ export default function ProjectContent({ project }) {
 
   const hasPdf = Boolean(project.pdfUrl);
   const hasFinalImages = Array.isArray(project.finalOutcomeImages) && project.finalOutcomeImages.length > 0;
+  const hasResearchImages = Array.isArray(project.researchImages) && project.researchImages.length > 0;
   const tabLabels = project.tabLabels || {};
   // When a project ships with a PDF lookbook, drop the Garment Development tab.
   const TABS = ALL_TABS
