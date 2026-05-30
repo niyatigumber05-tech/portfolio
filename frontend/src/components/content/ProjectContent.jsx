@@ -25,6 +25,7 @@ export default function ProjectContent({ project }) {
   const hasFinalImages = Array.isArray(project.finalOutcomeImages) && project.finalOutcomeImages.length > 0;
   const hasResearchImages = Array.isArray(project.researchImages) && project.researchImages.length > 0;
   const hasProcessImages = Array.isArray(project.processImages) && project.processImages.length > 0;
+  const hasReflectionImages = Array.isArray(project.reflectionImages) && project.reflectionImages.length > 0;
   const tabLabels = project.tabLabels || {};
   // When a project ships with a PDF lookbook, drop the Garment Development tab.
   const TABS = ALL_TABS
@@ -37,6 +38,7 @@ export default function ProjectContent({ project }) {
   const isProcessImagesTab = tab === 'process' && hasProcessImages;
   const isProcessImage = tab === 'process' && !hasProcessImages && Boolean(project.processImage);
   const isResearchImagesTab = tab === 'research' && hasResearchImages;
+  const isReflectionImagesTab = tab === 'reflection' && hasReflectionImages;
 
   return (
     <div className="flex h-full">
@@ -77,7 +79,7 @@ export default function ProjectContent({ project }) {
       <main
         key={tab}
         className="flex-1 overflow-auto niyati-scroll niyati-flicker relative"
-        style={{ background: isPdfTab ? '#2d2a26' : (isInspirationImage || isProcessImage || isProcessImagesTab || isFinalImagesTab || isResearchImagesTab ? '#2d2a26' : 'transparent') }}
+        style={{ background: isPdfTab ? '#2d2a26' : (isInspirationImage || isProcessImage || isProcessImagesTab || isFinalImagesTab || isResearchImagesTab || isReflectionImagesTab ? '#2d2a26' : 'transparent') }}
         data-testid={isPdfTab ? 'pdf-viewer-main' : 'project-reader-main'}
       >
         {isResearchImagesTab ? (
@@ -95,6 +97,25 @@ export default function ProjectContent({ project }) {
                   className="w-full block"
                   style={{ display: 'block', background: '#faf6f0' }}
                   data-testid={`research-image-${i}`}
+                />
+              ))}
+            </div>
+          </div>
+        ) : isReflectionImagesTab ? (
+          <div className="w-full h-full flex flex-col">
+            <div className="flex items-center justify-between px-4 py-2 sticky top-0 z-10" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
+              <div className="pixel text-[9px]" style={{ color: project.accent }}>{(tabLabels.reflection || 'REFLECTION').toUpperCase()} — LOOKBOOK</div>
+              <span className="pixel text-[8px]" style={{ color: '#6b6259' }}>{project.reflectionImages.length} PAGES</span>
+            </div>
+            <div className="flex flex-col" data-testid="reflection-stack">
+              {project.reflectionImages.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`${project.name} reflection page ${i + 1}`}
+                  className="w-full block"
+                  style={{ display: 'block', background: '#faf6f0' }}
+                  data-testid={`reflection-image-${i}`}
                 />
               ))}
             </div>

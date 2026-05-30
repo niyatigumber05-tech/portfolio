@@ -35,8 +35,10 @@ A project can declare:
 - `inspirationImage`  → renders Inspiration tab as a single full-image board
 - `processImage`      → renders Process tab as a single image
 - `processImages`    (array) → renders Process tab as full-width stacked lookbook pages
+- `reflectionImages` (array) → renders Reflection tab as full-width stacked lookbook pages
 - `tabLabels.process` → custom label for Process tab
 - `tabLabels.research` → custom label for Research tab
+- `tabLabels.reflection` → custom label for Reflection tab
 - `tabLabels.finalOutcome` → custom label for Final Outcome tab
 - `hideTabs`          → array of tab keys to hide entirely
 
@@ -54,6 +56,8 @@ A project can declare:
 - 2026-05-30 — **Reimagining Jo March Final Snapshots** populated with 3 stacked full-width images (`portfolio (12)`, `(11)`, `(10)`).
 - 2026-05-30 — **Digital Atelier Research tab** renamed to **"Brand Research"** via `tabLabels.research`; added `20.jpg` (Tommy Hilfiger brand research page) as a stacked full-width image. Header label now uses the renamed tab name.
 - 2026-05-30 — **Digital Atelier Process tab** populated with 2 stacked full-width lookbook pages (`21.jpg` mood + color story, `22.jpg` fabrics + product assortment). New `processImages` array schema added to ProjectContent renderer.
+- 2026-05-30 — **Digital Atelier Final Outcome** replaced PDF/text with 2 stacked full-width images (`23.jpg`, `24.jpg`).
+- 2026-05-30 — **Digital Atelier Reflection tab** renamed to **"Technical Drawing"** via `tabLabels.reflection`; added `25.jpg` + `26.jpg` as stacked full-width lookbook pages. New `reflectionImages` array schema added to ProjectContent renderer.
 
 ## Roadmap
 ### P0
