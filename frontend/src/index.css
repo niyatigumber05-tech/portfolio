@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Crimson+Pro:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sky-1: #f5d6dc;
+  --sky-2: #f7e1c9;
+  --sky-3: #e9dcf1;
+  --sky-4: #d8e7d6;
+  --cream: #faf6f0;
+  --cream-2: #f1ebe1;
+  --ink: #2d2a26;
+  --ink-soft: #4a4540;
+  --mauve: #7a4b57;
+  --gold: #c8a47e;
+  --sage: #9caf88;
+  --shadow-1: 2px 2px 0 #2d2a26;
+  --shadow-soft: 0 10px 30px rgba(45,42,38,0.08), 0 2px 0 rgba(45,42,38,0.18);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Crimson Pro', Georgia, serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+/* Pixel font helper */
+.pixel {
+  font-family: 'Press Start 2P', monospace;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+/* Crisp pixel rendering for SVGs */
+.crisp { image-rendering: pixelated; shape-rendering: crispEdges; }
+
+/* Custom cursor — pixel sewing needle */
+body, .niyati-os * {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 14 14' shape-rendering='crispEdges'><rect width='14' height='14' fill='none'/><rect x='1' y='1' width='1' height='1' fill='%232d2a26'/><rect x='2' y='2' width='1' height='1' fill='%232d2a26'/><rect x='3' y='3' width='1' height='1' fill='%232d2a26'/><rect x='4' y='4' width='1' height='1' fill='%237a4b57'/><rect x='5' y='5' width='1' height='1' fill='%237a4b57'/><rect x='6' y='6' width='1' height='1' fill='%23c8a47e'/><rect x='7' y='7' width='1' height='1' fill='%23c8a47e'/><rect x='8' y='8' width='1' height='1' fill='%23c8a47e'/><rect x='9' y='9' width='1' height='1' fill='%237a4b57'/><rect x='10' y='10' width='1' height='1' fill='%232d2a26'/></svg>") 2 2, default;
+}
+
+.niyati-os button, .niyati-os .clickable, .niyati-os a {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 14 14' shape-rendering='crispEdges'><rect x='3' y='2' width='1' height='1' fill='%232d2a26'/><rect x='3' y='3' width='2' height='1' fill='%232d2a26'/><rect x='3' y='4' width='3' height='1' fill='%232d2a26'/><rect x='3' y='5' width='4' height='1' fill='%232d2a26'/><rect x='3' y='6' width='5' height='1' fill='%232d2a26'/><rect x='3' y='7' width='6' height='1' fill='%232d2a26'/><rect x='3' y='8' width='4' height='1' fill='%232d2a26'/><rect x='3' y='9' width='2' height='1' fill='%232d2a26'/><rect x='4' y='3' width='1' height='1' fill='%23faf6f0'/><rect x='4' y='4' width='2' height='1' fill='%23faf6f0'/><rect x='4' y='5' width='3' height='1' fill='%23faf6f0'/><rect x='4' y='6' width='4' height='1' fill='%23faf6f0'/><rect x='4' y='7' width='3' height='1' fill='%23faf6f0'/></svg>") 3 2, pointer;
+}
+
+/* Pixel-stepped shadow utility */
+.pixel-shadow {
+  box-shadow:
+    2px 0 0 #2d2a26,
+    -2px 0 0 #2d2a26,
+    0 2px 0 #2d2a26,
+    0 -2px 0 #2d2a26,
+    4px 4px 0 rgba(45,42,38,0.18);
+}
+
+.pixel-border {
+  box-shadow:
+    0 0 0 2px #2d2a26,
+    4px 4px 0 rgba(45,42,38,0.16);
+}
+
+.glass-chrome {
+  background: linear-gradient(180deg, rgba(250,246,240,0.85), rgba(241,235,225,0.78));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Cloud drift */
+@keyframes drift {
+  0% { transform: translateX(-10vw); }
+  100% { transform: translateX(110vw); }
+}
+@keyframes driftSlow {
+  0% { transform: translateX(-15vw) translateY(0); }
+  50% { transform: translateX(50vw) translateY(-6px); }
+  100% { transform: translateX(110vw) translateY(0); }
+}
+@keyframes particle {
+  0% { transform: translateY(0) translateX(0); opacity: 0.0; }
+  20% { opacity: 0.8; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  94%, 98% { transform: scaleY(0.1); }
+}
+@keyframes sipBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+@keyframes windowIn {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes bootFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes shimmer {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(255,235,200,0.5)); }
+  50% { filter: drop-shadow(0 0 16px rgba(255,235,200,0.85)); }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 2px #2d2a26, 0 0 12px rgba(200,164,126,0.4); }
+  50% { box-shadow: 0 0 0 2px #2d2a26, 0 0 24px rgba(200,164,126,0.8); }
+}
+
+.window-in { animation: windowIn 220ms cubic-bezier(0.2, 0.7, 0.2, 1.1) both; }
+
+/* Scrollbar inside windows */
+.niyati-scroll::-webkit-scrollbar { width: 10px; }
+.niyati-scroll::-webkit-scrollbar-track { background: var(--cream-2); border-left: 2px solid var(--ink); }
+.niyati-scroll::-webkit-scrollbar-thumb { background: var(--ink); border: 2px solid var(--cream-2); }
+
+/* Select highlight */
+::selection { background: #c8a47e; color: #faf6f0; }
+
+@layer base {
+  :root {
+    --background: 42 40% 96%;
+    --foreground: 26 11% 17%;
+    --card: 42 40% 96%;
+    --card-foreground: 26 11% 17%;
+    --popover: 42 40% 96%;
+    --popover-foreground: 26 11% 17%;
+    --primary: 26 11% 17%;
+    --primary-foreground: 42 40% 96%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+}

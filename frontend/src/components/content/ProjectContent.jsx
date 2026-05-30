@@ -1,0 +1,120 @@
+import React, { useState } from 'react';
+import PixelIcon from '../PixelIcon';
+
+const TABS = [
+  ['concept', 'Concept'],
+  ['inspiration', 'Inspiration'],
+  ['research', 'Research'],
+  ['process', 'Process'],
+  ['garmentDevelopment', 'Garment Development'],
+  ['finalOutcome', 'Final Outcome'],
+  ['reflection', 'Reflection'],
+];
+
+export default function ProjectContent({ project }) {
+  const [tab, setTab] = useState('concept');
+  if (!project) return null;
+
+  return (
+    <div className="flex h-full">
+      {/* Sidebar */}
+      <aside
+        className="shrink-0 flex flex-col"
+        style={{ width: 200, borderRight: '2px solid #2d2a26', background: '#f1ebe1' }}
+      >
+        <div className="p-4 flex flex-col items-center text-center" style={{ borderBottom: '2px solid #2d2a26' }}>
+          <div style={{ background: '#faf6f0', border: '2px solid #2d2a26', padding: 6 }}>
+            <PixelIcon name={project.iconKey} size={48} accent={project.accent} />
+          </div>
+          <div className="pixel text-[9px] mt-3" style={{ color: project.accent }}>PROJECT</div>
+          <h2 className="pixel text-[10px] mt-1 leading-snug" style={{ color: '#2d2a26' }}>{project.name.toUpperCase()}</h2>
+          <p className="mt-3 text-[13px] italic" style={{ color: '#4a4540' }}>{project.short}</p>
+        </div>
+        <nav className="flex flex-col p-2 gap-1">
+          {TABS.map(([key, label]) => (
+            <button
+              key={key}
+              onClick={() => setTab(key)}
+              className="clickable text-left px-3 py-1.5"
+              style={{
+                background: tab === key ? project.accent : 'transparent',
+                color: tab === key ? '#faf6f0' : '#2d2a26',
+                border: tab === key ? '2px solid #2d2a26' : '2px solid transparent',
+                fontFamily: "'Press Start 2P', monospace",
+                fontSize: 8,
+              }}
+            >
+              {label.toUpperCase()}
+            </button>
+          ))}
+        </nav>
+      </aside>
+
+      {/* Reader */}
+      <main className="flex-1 overflow-auto niyati-scroll">
+        <div className="max-w-2xl mx-auto px-10 py-10">
+          <div className="pixel text-[9px] mb-2" style={{ color: project.accent }}>
+            {TABS.find(([k]) => k === tab)[1].toUpperCase()}
+          </div>
+          <div style={{ height: 2, background: '#2d2a26', width: 60, marginBottom: 18 }}/>
+          <p
+            style={{
+              fontFamily: "'Crimson Pro', serif",
+              fontSize: 18,
+              lineHeight: 1.6,
+              color: '#2d2a26',
+              fontWeight: 400,
+            }}
+          >
+            {project.sections[tab]}
+          </p>
+
+          {/* Moodboard placeholder */}
+          {tab === 'inspiration' && (
+            <div className="mt-8">
+              <div className="pixel text-[9px] mb-3" style={{ color: '#6b6259' }}>MOODBOARD — PENDING UPLOAD</div>
+              <div className="grid grid-cols-3 gap-3">
+                {[1,2,3,4,5,6].map((i) => (
+                  <div
+                    key={i}
+                    style={{
+                      aspectRatio: '1', background: `linear-gradient(135deg, ${project.accent}22, ${project.accent}44)`,
+                      border: '2px solid #2d2a26', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}
+                  >
+                    <span className="pixel text-[8px]" style={{ color: project.accent }}>IMG&nbsp;0{i}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-[12px] mt-3 italic" style={{ color: '#6b6259' }}>
+                Replace these placeholders with your project moodboard images.
+              </p>
+            </div>
+          )}
+
+          {tab === 'finalOutcome' && (
+            <div className="mt-8">
+              <div className="pixel text-[9px] mb-3" style={{ color: '#6b6259' }}>FINAL GARMENTS — PENDING UPLOAD</div>
+              <div className="grid grid-cols-2 gap-4">
+                {[1,2,3,4].map((i) => (
+                  <div
+                    key={i}
+                    style={{
+                      aspectRatio: '3 / 4',
+                      background: `linear-gradient(180deg, ${project.accent}33, ${project.accent}66)`,
+                      border: '2px solid #2d2a26',
+                      display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
+                      padding: 10,
+                    }}
+                  >
+                    <span className="pixel text-[8px]" style={{ color: '#faf6f0' }}>LOOK&nbsp;0{i}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+}
