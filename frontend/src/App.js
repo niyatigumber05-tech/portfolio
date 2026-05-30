@@ -114,7 +114,18 @@ export default function App() {
   };
 
   return (
-    <div className="App niyati-os" style={{ background: 'linear-gradient(180deg, #f5d6dc 0%, #f7e1c9 35%, #e9dcf1 70%, #d8e7d6 100%)' }}>
+    <div
+      className="App niyati-os"
+      style={{
+        backgroundImage:
+          "url('https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/rc5mnole_cv.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        backgroundColor: '#f5d6dc',
+      }}
+    >
       <SkyBackground />
 
       {!booted && <BootScreen onDone={() => { setBooted(true); sound.play('startup'); }} />}
