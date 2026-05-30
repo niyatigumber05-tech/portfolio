@@ -22,6 +22,7 @@ export default function ProjectContent({ project }) {
     .filter(([k]) => !(hasPdf && k === 'garmentDevelopment'))
     .filter(([k]) => !hideTabs.has(k));
   const isPdfTab = hasPdf && tab === 'finalOutcome';
+  const isInspirationImage = tab === 'inspiration' && Boolean(project.inspirationImage);
 
   return (
     <div className="flex h-full">
@@ -59,8 +60,36 @@ export default function ProjectContent({ project }) {
       </aside>
 
       {/* Reader */}
-      <main className="flex-1 overflow-auto niyati-scroll" style={{ background: isPdfTab ? '#2d2a26' : 'transparent' }} data-testid={isPdfTab ? 'pdf-viewer-main' : 'project-reader-main'}>
-        {isPdfTab ? (
+      <main className="flex-1 overflow-auto niyati-scroll" style={{ background: isPdfTab ? '#2d2a26' : (isInspirationImage ? '#2d2a26' : 'transparent') }} data-testid={isPdfTab ? 'pdf-viewer-main' : 'project-reader-main'}>
+        {isInspirationImage ? (
+          <div className="w-full h-full flex flex-col">
+            <div className="flex items-center justify-between px-4 py-2" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
+              <div className="pixel text-[9px]" style={{ color: project.accent }}>INSPIRATION — MOODBOARD</div>
+              <a
+                href={project.inspirationImage}
+                target="_blank"
+                rel="noreferrer"
+                className="clickable pixel text-[8px] px-2 py-1"
+                style={{ background: project.accent, color: '#faf6f0', border: '2px solid #2d2a26' }}
+                data-testid="inspiration-open-new-tab"
+              >
+                OPEN IN NEW TAB
+              </a>
+            </div>
+            <div
+              className="flex-1 w-full"
+              style={{
+                background: '#faf6f0',
+                backgroundImage: `url('${project.inspirationImage}')`,
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+              data-testid="inspiration-image"
+              aria-label={`${project.name} inspiration board`}
+            />
+          </div>
+        ) : isPdfTab ? (
           <div className="w-full h-full flex flex-col">
             <div className="flex items-center justify-between px-4 py-2" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
               <div className="pixel text-[9px]" style={{ color: project.accent }}>FINAL OUTCOME — PORTFOLIO.PDF</div>
@@ -89,32 +118,17 @@ export default function ProjectContent({ project }) {
             {TABS.find(([k]) => k === tab)[1].toUpperCase()}
           </div>
           <div style={{ height: 2, background: '#2d2a26', width: 60, marginBottom: 18 }}/>
-          {!(tab === 'inspiration' && project.inspirationImage) && (
-            <p
-              style={{
-                fontFamily: "'Crimson Pro', serif",
-                fontSize: 18,
-                lineHeight: 1.6,
-                color: '#2d2a26',
-                fontWeight: 400,
-              }}
-            >
-              {project.sections[tab]}
-            </p>
-          )}
-
-          {/* Inspiration board — real image if supplied, otherwise placeholders */}
-          {tab === 'inspiration' && project.inspirationImage && (
-            <div data-testid="inspiration-image-wrap">
-              <img
-                src={project.inspirationImage}
-                alt={`${project.name} inspiration board`}
-                className="w-full h-auto"
-                style={{ border: '2px solid #2d2a26', background: '#faf6f0', imageRendering: 'auto' }}
-                data-testid="inspiration-image"
-              />
-            </div>
-          )}
+          <p
+            style={{
+              fontFamily: "'Crimson Pro', serif",
+              fontSize: 18,
+              lineHeight: 1.6,
+              color: '#2d2a26',
+              fontWeight: 400,
+            }}
+          >
+            {project.sections[tab]}
+          </p>
 
           {tab === 'inspiration' && !project.inspirationImage && (
             <div className="mt-8">

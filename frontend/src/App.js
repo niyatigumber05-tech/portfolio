@@ -85,7 +85,7 @@ export default function App() {
     } else if (icon.id === 'writing') {
       openWindow({ id: 'writing', title: 'Writing & Creative Work', renderKey: 'writing', accent: icon.accent, w: 720, h: 520 });
     } else {
-      openWindow({ id: icon.id, title: icon.name, renderKey: 'project', payload: icon, accent: icon.accent, w: 780, h: 540 });
+      openWindow({ id: icon.id, title: icon.name, renderKey: 'project', payload: icon, accent: icon.accent, w: 980, h: 640 });
     }
   };
 
