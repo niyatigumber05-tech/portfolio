@@ -41,6 +41,7 @@ Build an immersive pixel-art fashion portfolio for Niyati Gumber (Fashion Design
 - 2026-02 — Sticky note: removed the "n.g." signature line per user request.
 - 2026-02 — `PixelCharacter` redesigned as a classic tailor's dress-form (torso + neck peg + wooden base/pole, **no head**) with idle sway, sewing-pin and measuring-tape poses.
 - 2026-02 — Window controls (close / minimize / expand) and MenuBar mute button now trigger appropriate sound effects with hover cues.
+- 2026-02 — **Digital Atelier project**: renamed "Recess Club" → "Digital Atelier", swapped tennis-ball icon for a pixel CRT/monitor icon (`monitor` icon added to `PixelIcon.jsx`), and wired the Tommy Hilfiger SS27 portfolio PDF into the "Final Outcome" tab via an inline `<iframe>` plus an "Open in New Tab" button. The "Garment Development" tab is auto-hidden for any project carrying a `pdfUrl`.
 
 ## Backlog / Roadmap
 

@@ -73,15 +73,20 @@ export const projects = [
     desktopSlot: 1,
   },
   {
-    id: 'recess-club',
-    name: 'Recess Club',
-    iconKey: 'tennis',
-    accent: '#9CAF88',
-    short: 'A doodled, soft-tailored sportswear capsule.',
+    id: 'digital-atelier',
+    name: 'Digital Atelier',
+    iconKey: 'monitor',
+    accent: '#7A8FA8',
+    short: 'A digital lookbook — Tommy Hilfiger SS27, viewed through the screen.',
+    pdfUrl: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/ytak1swr_Portfolio%20%282%29.pdf',
     sections: {
       ...lorem,
       concept:
-        'Recess Club is a soft-tailored sportswear capsule built around the rituals of recreation — a tennis afternoon, a notebook in the grass, a kept-secret club.',
+        'Digital Atelier is a screen-first lookbook for a Tommy Hilfiger SS27 capsule — heritage tailoring re-cut through a digital, post-runway lens. The collection is designed to live on a monitor before it ever lives on a body.',
+      inspiration:
+        'Heritage Americana, mid-century catalogue layouts, the visual grammar of early web fashion editorials. References to the Hilfiger archive viewed through a CRT.',
+      finalOutcome:
+        'The collection arrives as a digital portfolio — pages, looks, and process documentation embedded directly inside the Atelier window.',
     },
     desktopSlot: 2,
   },

@@ -241,6 +241,35 @@ const ICONS = {
       {px(11, 4, '#faf6f0', 1, 1)}
     </g>
   ),
+  // CRT monitor / desktop computer — digital atelier
+  monitor: ({ accent = '#7A8FA8' }) => (
+    <g>
+      {/* case fill */}
+      {px(1, 2, '#f1ebe1', 14, 9)}
+      {/* case border */}
+      {px(1, 2, '#2d2a26', 14, 1)}
+      {px(1, 10, '#2d2a26', 14, 1)}
+      {px(1, 2, '#2d2a26', 1, 9)}
+      {px(14, 2, '#2d2a26', 1, 9)}
+      {/* screen */}
+      {px(3, 4, accent, 10, 5)}
+      {px(3, 4, '#2d2a26', 10, 1)}
+      {px(3, 8, '#2d2a26', 10, 1)}
+      {px(3, 4, '#2d2a26', 1, 5)}
+      {px(12, 4, '#2d2a26', 1, 5)}
+      {/* scanline highlight */}
+      {px(4, 5, '#faf6f0', 2, 1)}
+      {px(4, 6, '#faf6f0', 1, 1)}
+      {px(5, 7, '#faf6f0', 4, 1)}
+      {/* power LED */}
+      {px(12, 9, '#9caf88', 1, 1)}
+      {/* neck */}
+      {px(7, 11, '#2d2a26', 2, 1)}
+      {/* base */}
+      {px(4, 12, '#2d2a26', 8, 1)}
+      {px(3, 13, '#2d2a26', 10, 1)}
+    </g>
+  ),
   // Trash can — chrome wireframe
   trash: () => (
     <g>

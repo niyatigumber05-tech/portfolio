@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PixelIcon from '../PixelIcon';
 
-const TABS = [
+const ALL_TABS = [
   ['concept', 'Concept'],
   ['inspiration', 'Inspiration'],
   ['research', 'Research'],
@@ -14,6 +14,11 @@ const TABS = [
 export default function ProjectContent({ project }) {
   const [tab, setTab] = useState('concept');
   if (!project) return null;
+
+  const hasPdf = Boolean(project.pdfUrl);
+  // When a project ships with a PDF lookbook, drop the Garment Development tab.
+  const TABS = hasPdf ? ALL_TABS.filter(([k]) => k !== 'garmentDevelopment') : ALL_TABS;
+  const isPdfTab = hasPdf && tab === 'finalOutcome';
 
   return (
     <div className="flex h-full">
@@ -51,7 +56,31 @@ export default function ProjectContent({ project }) {
       </aside>
 
       {/* Reader */}
-      <main className="flex-1 overflow-auto niyati-scroll">
+      <main className="flex-1 overflow-auto niyati-scroll" style={{ background: isPdfTab ? '#2d2a26' : 'transparent' }} data-testid={isPdfTab ? 'pdf-viewer-main' : 'project-reader-main'}>
+        {isPdfTab ? (
+          <div className="w-full h-full flex flex-col">
+            <div className="flex items-center justify-between px-4 py-2" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
+              <div className="pixel text-[9px]" style={{ color: project.accent }}>FINAL OUTCOME — PORTFOLIO.PDF</div>
+              <a
+                href={project.pdfUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="clickable pixel text-[8px] px-2 py-1"
+                style={{ background: project.accent, color: '#faf6f0', border: '2px solid #2d2a26' }}
+                data-testid="pdf-open-new-tab"
+              >
+                OPEN IN NEW TAB
+              </a>
+            </div>
+            <iframe
+              src={project.pdfUrl}
+              title={`${project.name} portfolio PDF`}
+              className="flex-1 w-full"
+              style={{ border: 'none', background: '#2d2a26' }}
+              data-testid="pdf-iframe"
+            />
+          </div>
+        ) : (
         <div className="max-w-2xl mx-auto px-10 py-10">
           <div className="pixel text-[9px] mb-2" style={{ color: project.accent }}>
             {TABS.find(([k]) => k === tab)[1].toUpperCase()}
@@ -92,7 +121,7 @@ export default function ProjectContent({ project }) {
             </div>
           )}
 
-          {tab === 'finalOutcome' && (
+          {tab === 'finalOutcome' && !hasPdf && (
             <div className="mt-8">
               <div className="pixel text-[9px] mb-3" style={{ color: '#6b6259' }}>FINAL GARMENTS — PENDING UPLOAD</div>
               <div className="grid grid-cols-2 gap-4">
@@ -114,6 +143,7 @@ export default function ProjectContent({ project }) {
             </div>
           )}
         </div>
+        )}
       </main>
     </div>
   );
