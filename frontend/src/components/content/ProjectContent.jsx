@@ -81,7 +81,7 @@ export default function ProjectContent({ project }) {
         {isResearchImagesTab ? (
           <div className="w-full h-full flex flex-col">
             <div className="flex items-center justify-between px-4 py-2 sticky top-0 z-10" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
-              <div className="pixel text-[9px]" style={{ color: project.accent }}>RESEARCH — LOOKBOOK</div>
+              <div className="pixel text-[9px]" style={{ color: project.accent }}>{(tabLabels.research || 'RESEARCH').toUpperCase()} — LOOKBOOK</div>
               <span className="pixel text-[8px]" style={{ color: '#6b6259' }}>{project.researchImages.length} PAGES</span>
             </div>
             <div className="flex flex-col" data-testid="research-stack">

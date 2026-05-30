@@ -35,6 +35,8 @@ A project can declare:
 - `inspirationImage`  → renders Inspiration tab as a single full-image board
 - `processImage`      → renders Process tab as a single image
 - `tabLabels.process` → custom label for Process tab
+- `tabLabels.research` → custom label for Research tab
+- `tabLabels.finalOutcome` → custom label for Final Outcome tab
 - `hideTabs`          → array of tab keys to hide entirely
 
 ## Changelog
@@ -48,6 +50,8 @@ A project can declare:
 - 2026-05-30 — **Self Radiance Final Outcome** replaced PDF with 3 stacked full-width images (`31.jpg`, `29.jpg`, `30.jpg`).
 - 2026-05-30 — Project "When Your Initials Are Enough" renamed to **Reimagining Jo March**; tabs restricted to Research + Final Snapshots only.
 - 2026-05-30 — **Reimagining Jo March Research tab** added with 2 stacked full-width images (`portfolio (9).jpg`, `portfolio (8).jpg`). New `researchImages` schema added to ProjectContent renderer.
+- 2026-05-30 — **Reimagining Jo March Final Snapshots** populated with 3 stacked full-width images (`portfolio (12)`, `(11)`, `(10)`).
+- 2026-05-30 — **Digital Atelier Research tab** renamed to **"Brand Research"** via `tabLabels.research`; added `20.jpg` (Tommy Hilfiger brand research page) as a stacked full-width image. Header label now uses the renamed tab name.
 
 ## Roadmap
 ### P0

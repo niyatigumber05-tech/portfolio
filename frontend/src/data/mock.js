@@ -87,6 +87,10 @@ export const projects = [
     accent: '#7A8FA8',
     short: 'A digital lookbook — Tommy Hilfiger SS27, viewed through the screen.',
     pdfUrl: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/ytak1swr_Portfolio%20%282%29.pdf',
+    tabLabels: { research: 'Brand Research' },
+    researchImages: [
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/m33ditn2_20.jpg',
+    ],
     sections: {
       ...lorem,
       concept:
