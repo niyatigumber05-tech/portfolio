@@ -18,13 +18,16 @@ export default function ProjectContent({ project }) {
   const hasPdf = Boolean(project.pdfUrl);
   const hasFinalImages = Array.isArray(project.finalOutcomeImages) && project.finalOutcomeImages.length > 0;
   const hideTabs = new Set(project.hideTabs || []);
+  const tabLabels = project.tabLabels || {};
   // When a project ships with a PDF lookbook, drop the Garment Development tab.
   const TABS = ALL_TABS
     .filter(([k]) => !(hasPdf && k === 'garmentDevelopment'))
-    .filter(([k]) => !hideTabs.has(k));
+    .filter(([k]) => !hideTabs.has(k))
+    .map(([k, label]) => [k, tabLabels[k] || label]);
   const isPdfTab = hasPdf && tab === 'finalOutcome';
   const isFinalImagesTab = !hasPdf && hasFinalImages && tab === 'finalOutcome';
   const isInspirationImage = tab === 'inspiration' && Boolean(project.inspirationImage);
+  const isProcessImage = tab === 'process' && Boolean(project.processImage);
 
   return (
     <div className="flex h-full">
@@ -62,7 +65,7 @@ export default function ProjectContent({ project }) {
       </aside>
 
       {/* Reader */}
-      <main className="flex-1 overflow-auto niyati-scroll" style={{ background: isPdfTab ? '#2d2a26' : (isInspirationImage ? '#2d2a26' : (isFinalImagesTab ? '#2d2a26' : 'transparent')) }} data-testid={isPdfTab ? 'pdf-viewer-main' : 'project-reader-main'}>
+      <main className="flex-1 overflow-auto niyati-scroll" style={{ background: isPdfTab ? '#2d2a26' : (isInspirationImage || isProcessImage || isFinalImagesTab ? '#2d2a26' : 'transparent') }} data-testid={isPdfTab ? 'pdf-viewer-main' : 'project-reader-main'}>
         {isFinalImagesTab ? (
           <div className="w-full h-full flex flex-col">
             <div className="flex items-center justify-between px-4 py-2 sticky top-0 z-10" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
@@ -108,6 +111,31 @@ export default function ProjectContent({ project }) {
               }}
               data-testid="inspiration-image"
               aria-label={`${project.name} inspiration board`}
+            />
+          </div>
+        ) : isProcessImage ? (
+          <div className="w-full h-full flex flex-col">
+            <div className="flex items-center justify-between px-4 py-2 sticky top-0 z-10" style={{ background: '#f1ebe1', borderBottom: '2px solid #2d2a26' }}>
+              <div className="pixel text-[9px]" style={{ color: project.accent }}>
+                {(tabLabels.process || 'PROCESS').toUpperCase()} — PAGE
+              </div>
+              <a
+                href={project.processImage}
+                target="_blank"
+                rel="noreferrer"
+                className="clickable pixel text-[8px] px-2 py-1"
+                style={{ background: project.accent, color: '#faf6f0', border: '2px solid #2d2a26' }}
+                data-testid="process-open-new-tab"
+              >
+                OPEN IN NEW TAB
+              </a>
+            </div>
+            <img
+              src={project.processImage}
+              alt={`${project.name} process page`}
+              className="w-full block"
+              style={{ display: 'block', background: '#faf6f0' }}
+              data-testid="process-image"
             />
           </div>
         ) : isPdfTab ? (

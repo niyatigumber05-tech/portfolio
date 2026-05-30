@@ -45,9 +45,8 @@ export const projects = [
     accent: '#B07585',
     short: 'A study in stillness — architecture worn close to the skin.',
     inspirationImage: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/cce1v3ws_portfolio.jpg',
-    processImage: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/322uqzby_portfolio%20%283%29.jpg',
+    processImage: 'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/f9hvofjq_portfolio%20%284%29.jpg',
     finalOutcomeImages: [
-      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/f9hvofjq_portfolio%20%284%29.jpg',
       'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/7lo3hnig_portfolio%20%286%29.jpg',
       'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/h30j86b3_portfolio%20%285%29.jpg',
     ],
