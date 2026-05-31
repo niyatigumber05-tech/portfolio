@@ -58,6 +58,7 @@ A project can declare:
 - 2026-05-30 — **Digital Atelier Process tab** populated with 2 stacked full-width lookbook pages (`21.jpg` mood + color story, `22.jpg` fabrics + product assortment). New `processImages` array schema added to ProjectContent renderer.
 - 2026-05-30 — **Digital Atelier Final Outcome** replaced PDF/text with 2 stacked full-width images (`23.jpg`, `24.jpg`).
 - 2026-05-30 — **Digital Atelier Reflection tab** renamed to **"Technical Drawing"** via `tabLabels.reflection`; added `25.jpg` + `26.jpg` as stacked full-width lookbook pages. New `reflectionImages` array schema added to ProjectContent renderer.
+- 2026-05-30 — Project **"Floral Allure" renamed to "Stories of Heirloom"**; Research tab populated with `portfolio (13).jpg` (11:11 brand research — seed-to-stitch / indigo / Indian craft clusters). Short tagline + concept copy updated.
 
 ## Roadmap
 ### P0

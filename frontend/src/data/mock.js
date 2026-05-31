@@ -140,14 +140,17 @@ export const projects = [
   },
   {
     id: 'floral-allure',
-    name: 'Floral Allure',
+    name: 'Stories of Heirloom',
     iconKey: 'flower',
     accent: '#D89AAE',
-    short: 'Organic bloom translated into sculpted silhouettes.',
+    short: 'Seed-to-stitch craft — heirloom narratives woven through living indigo and rural Indian ateliers.',
+    researchImages: [
+      'https://customer-assets.emergentagent.com/job_luxe-studio-6/artifacts/1o6kpco0_portfolio%20%2813%29.jpg',
+    ],
     sections: {
       ...lorem,
       concept:
-        'A botanical study — how a single bloom unfolds, layer by layer, and how that unfolding can be sewn into a sleeve, a hem, a bodice.',
+        'A study of 11:11 — a brand that treats clothing as a bridge between wearer, artisan and nature. The collection learns from a seed-to-stitch philosophy, where decentralised craft clusters, natural indigo and embroidered artisan signatures replace corporate tags.',
     },
     desktopSlot: 4,
   },
